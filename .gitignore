@@ -1,0 +1,7 @@
+.depend.*.pico
+.pyenv
+*.pico
+build/
+diff.so
+diff.so.debug
+diff.so.full
