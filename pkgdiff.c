@@ -42,6 +42,8 @@ static const char* PKGDIFF_FORMAT[PKGDIFF_QUERY_LEN] = {
 static char* get_info(struct pkg* pkg, const char* format) {
   char* ret = NULL;
   pkg_asprintf(&ret, format, pkg);
+  if (ret == NULL)
+    asprintf(&ret, "");
   return ret;
 }
 
