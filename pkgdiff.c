@@ -24,8 +24,23 @@ const char* PKGDIFF_QUERY[PKGDIFF_QUERY_LEN] = {
   "version",
   "origin",
   "prefix",
+  "categories",
   "maintainer",
+  "comment",
+  "description",
+  "licenses",
+  "homepage",
+  "architecture",
+  "messages",
+  "options",
+  "annotations",
+  "users",
+  "groups",
+  "dependencies",
+  "required_libraries",
   "files",
+  "directories",
+  "provided_libraries"
 };
 
 int pkgdiff_errno = 0;
@@ -35,8 +50,23 @@ static const char* PKGDIFF_FORMAT[PKGDIFF_QUERY_LEN] = {
   "%v",
   "%o",
   "%p",
+  "%C%{%Cn\n%}",
   "%m",
+  "%c",
+  "%e",
+  "%L",
+  "%w",
+  "%q",
+  "%M",
+  "%O%{%On: %Ov [default: %Od] <%OD>\n%}",
+  "%A%{%An: %Av\n%}",
+  "%U%{%Un, %|%}",
+  "%G%{%Gn\n%}",
+  "%d%{%dn-%dv (%do)\n%}",
+  "%B%{%Bn\n%}",
   "%F%{%Fn %Fu:%Fg:%Fp %Fs\n%}",
+  "%D%{%Dn %Du:%Dg:%Dp\n%}",
+  "%b%{%bn\n%}"
 };
 
 static char* get_info(struct pkg* pkg, const char* format) {

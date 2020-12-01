@@ -5,3 +5,4 @@ build/
 diff.so
 diff.so.debug
 diff.so.full
+pkgdiff.so

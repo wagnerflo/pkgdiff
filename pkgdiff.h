@@ -19,7 +19,7 @@
 #define PKGDIFF_RESULT_DELETE '-'
 #define PKGDIFF_RESULT_INSERT '+'
 
-#define PKGDIFF_QUERY_LEN 6
+#define PKGDIFF_QUERY_LEN 21
 extern const char* PKGDIFF_QUERY[PKGDIFF_QUERY_LEN];
 
 extern int pkgdiff_errno;
