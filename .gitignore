@@ -5,4 +5,6 @@ build/
 diff.so
 diff.so.debug
 diff.so.full
+dist/
+pkgdiff.egg-info/
 pkgdiff.so

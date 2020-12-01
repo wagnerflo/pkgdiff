@@ -1,3 +1,4 @@
+from pathlib import Path
 from setuptools import setup,Extension
 from subprocess import check_output
 
@@ -7,6 +8,8 @@ def pkgconfig(*args):
 setup(
     name='pkgdiff',
     description='Compare FreeBSD pkg files by metadata.',
+    long_description=(Path(__file__).parent / 'README.md').read_text(),
+    long_description_content_type='text/markdown',
     version='0.1',
     author='Florian Wagner',
     author_email='florian@wagner-flo.net',
@@ -22,18 +25,27 @@ setup(
         'Topic :: System :: Archiving :: Packaging',
         'Topic :: System :: Systems Administration',
     ],
+    license_files=['LICENSE'],
+    python_requires='>=3.8',
     ext_modules=[
         Extension(
             'pkgdiff',
             sources=[
-                'python.c',
-                'pkgdiff.c',
+                'src/python-module.c',
+                'src/pkgdiff.c',
+                'ext/libmba-0.9.1/allocator.c',
+                'ext/libmba-0.9.1/diff.c',
+                'ext/libmba-0.9.1/msgno.c',
+                'ext/libmba-0.9.1/suba.c',
+                'ext/libmba-0.9.1/varray.c',
+            ],
+            include_dirs=[
+                'ext/libmba-0.9.1',
             ],
             extra_compile_args=[
                 *pkgconfig('--cflags', 'pkg'),
             ],
             extra_link_args=[
-                '-Wl,-Bstatic', '-lmba', '-Wl,-Bdynamic',
                 *pkgconfig('--libs', 'pkg'),
             ],
         ),
